@@ -20,10 +20,32 @@ public class Game{
         this.play();
     }
 
+    public static void clearScreen() {
+        try {
+            final String os = System.getProperty("os.name").toLowerCase();
+            if (os.contains("win")) {
+                // Windows
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                // Unix-based (Linux, macOS)
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void play(){
         Scanner scanner = new Scanner(System.in);
 
         while(true){
+            try {
+                Thread.sleep(100); // Wait for 2 seconds
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            clearScreen(); // Clear the screen
             grid.display();
             System.out.println(player.getCoords());
             System.out.print("Enter a direction (w,a,s,d) or 'quit' to exit: ");
@@ -31,16 +53,16 @@ public class Game{
 
             if(input.equals("w")){
                 player.move(input);
-                grid.placeSprite(player);
+                grid.placeSprite(player, input);
             }else if(input.equals("a")){
                 player.move(input);
-                grid.placeSprite(player);
+                grid.placeSprite(player, input);
             }else if (input.equals("s")){
                 player.move(input);
-                grid.placeSprite(player);
+                grid.placeSprite(player, input);
             }else if (input.equals("d")){
                 player.move(input);
-                grid.placeSprite(player);
+                grid.placeSprite(player, input);
             }
         }
     }

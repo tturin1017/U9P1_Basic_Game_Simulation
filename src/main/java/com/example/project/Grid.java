@@ -15,7 +15,11 @@ public class Grid{
         }
     }
 
-    public void placeSprite(Sprite s) {
+    public void placeSprite(Sprite s){
+        grid[s.getY()][s.getX()]=s;
+    }
+
+    public void placeSprite(Sprite s, String direction) {
         if(!isValid(s.getX(),s.getY())){
             if(s.getX()<0){
                 s.move("s");
@@ -27,10 +31,18 @@ public class Grid{
                 s.move("a");
             }
         }
-
-        grid[s.getX()][s.getY()] = s;
-        
+        if(direction.equals("w")){
+            grid[s.getY()+1][s.getX()]=new Dot(s.getX(),s.getY()+1);
+        }else if(direction.equals("a")){
+            grid[s.getY()][s.getX()+1]=new Dot(s.getX()+1,s.getY());
+        }else if (direction.equals("s")){
+            grid[s.getY()-1][s.getX()]=new Dot(s.getX(),s.getY()-1);
+        }else if(direction.equals("d")){
+            grid[s.getY()][s.getX()-1]=new Dot(s.getX()-1,s.getY());
+        }
+        placeSprite(s);
     }
+
 
     public void display() {
         for (int i = 0; i < size; i++) {
