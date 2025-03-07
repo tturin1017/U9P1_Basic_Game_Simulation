@@ -31,8 +31,8 @@ public class Player extends Sprite {
     }
 
     @Override
-    public String getCoords(int size){
-        return "Player " + super.getCoords(size);
+    public String getCoords(){
+        return "Player " + super.getCoords();
     }
 
     @Override
@@ -41,8 +41,8 @@ public class Player extends Sprite {
     }
 
     public void interact(Sprite[][] grid, String direction, int numTreasures) {
-        int row = grid.length-1-this.getY();
-        int col = this.getX();
+        int row = grid.length-1-y;
+        int col = x;
 
         //if a treasure or enemy is in your way
         if(direction.equals("a") && col>0){
@@ -99,7 +99,7 @@ public class Player extends Sprite {
             }
         }
     }
-
+   
 }
 
 

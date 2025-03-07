@@ -14,8 +14,7 @@ public class Sprite {
     public void setX(int x){this.x=x;}
     public void setY(int y){this.y=y;}
 
-    public String getCoords(int size){
-        //return "["+(x+1)+", "+((size)-y)+"]";
+    public String getCoords(){
         return "("+x+", "+(y)+")";
     }
 

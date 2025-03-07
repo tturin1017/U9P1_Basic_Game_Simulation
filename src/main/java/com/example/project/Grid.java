@@ -49,9 +49,6 @@ public class Grid{
             }
         }
    
-        
-        
-        
         placeSprite(s);
     }
 
@@ -103,6 +100,9 @@ public class Grid{
 
     public boolean isValid(int x, int y){
         return x>=0 && x < size && y>=0 && y < size;
+    }
+    public static void main(String[] args) {
+        System.out.println("hello");
     }
 
 }

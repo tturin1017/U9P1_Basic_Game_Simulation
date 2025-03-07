@@ -1,6 +1,5 @@
 package com.example.project;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Game{
     private Grid grid;
@@ -51,7 +50,7 @@ public class Game{
             clearScreen(); // Clear the screen
 
             grid.display();
-            System.out.println(player.getCoords(size));
+            System.out.println(player.getCoords());
             System.out.println(player.getRowCol(size));
             System.out.println("Treasure Collected: "+player.getTreasureCount());
             System.out.println("Lives remaining: "+ player.getLives());
