@@ -15,31 +15,43 @@ public class Grid{
         }
     }
 
+    public Sprite[][] getGrid(){return grid;}
+
     public void placeSprite(Sprite s){
-        grid[s.getY()][s.getX()]=s;
+        grid[size-1-s.getY()][s.getX()]=s;
     }
 
     public void placeSprite(Sprite s, String direction) {
-        if(!isValid(s.getX(),s.getY())){
-            if(s.getX()<0){
-                s.move("s");
-            }else if(s.getX()>size-1){
-                s.move("w");
-            }else if (s.getY()<0){
+        int x = s.getX();
+        int y = s.getY();
+        int row = (size-1)-s.getY();
+        int col = s.getX();
+
+        if(!isValid(x,y)){
+            if(col<0){
                 s.move("d");
-            }else if(s.getY()>size-1){
+            }else if(col>size-1){
                 s.move("a");
+            }else if (row<0){
+                s.move("s");
+            }else if(row>size-1){
+                s.move("w");
+            }
+        }else{
+            if(direction.equals("w")){
+                grid[row+1][col]=new Dot(x,y-1);
+            }else if(direction.equals("a")){
+                grid[row][col+1]=new Dot(x+1,y);
+            }else if (direction.equals("s")){
+                grid[row-1][col]=new Dot(x,y+1);
+            }else if(direction.equals("d")){
+                grid[row][col-1]=new Dot(x-1,y);
             }
         }
-        if(direction.equals("w")){
-            grid[s.getY()+1][s.getX()]=new Dot(s.getX(),s.getY()+1);
-        }else if(direction.equals("a")){
-            grid[s.getY()][s.getX()+1]=new Dot(s.getX()+1,s.getY());
-        }else if (direction.equals("s")){
-            grid[s.getY()-1][s.getX()]=new Dot(s.getX(),s.getY()-1);
-        }else if(direction.equals("d")){
-            grid[s.getY()][s.getX()-1]=new Dot(s.getX()-1,s.getY());
-        }
+   
+        
+        
+        
         placeSprite(s);
     }
 
@@ -48,13 +60,13 @@ public class Grid{
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (grid[i][j] instanceof Dot) {
-                    System.out.print(". ");
+                    System.out.print("⬜");
                 } else if (grid[i][j] instanceof Player) {
-                    System.out.print("P ");
+                    System.out.print("🦄");
                 } else if (grid[i][j] instanceof Enemy) {
-                    System.out.print("E ");
+                    System.out.print("🦂");
                 } else if (grid[i][j] instanceof Treasure) {
-                    System.out.print("T ");
+                    System.out.print("🌈");
                 }
             }
             System.out.println();

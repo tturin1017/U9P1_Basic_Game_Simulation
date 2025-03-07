@@ -10,4 +10,9 @@ public class Enemy extends Sprite {
     public void move(String direction) {
         // Implement random or chasing movement
     }
+
+    @Override
+    public String getCoords(int size){
+        return "Enemy " + super.getCoords(size);
+    }
 }

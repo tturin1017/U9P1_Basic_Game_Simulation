@@ -1,5 +1,6 @@
 package com.example.project;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Game{
     private Grid grid;
@@ -38,32 +39,29 @@ public class Game{
 
     public void play(){
         Scanner scanner = new Scanner(System.in);
+        String input = "";
 
-        while(true){
+        while(!input.equals("q")){
             try {
-                Thread.sleep(100); // Wait for 2 seconds
+                Thread.sleep(100); // Wait for 1/10 seconds
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             clearScreen(); // Clear the screen
-            grid.display();
-            System.out.println(player.getCoords());
-            System.out.print("Enter a direction (w,a,s,d) or 'quit' to exit: ");
-            String input = scanner.nextLine().trim().toLowerCase();
 
-            if(input.equals("w")){
-                player.move(input);
-                grid.placeSprite(player, input);
-            }else if(input.equals("a")){
-                player.move(input);
-                grid.placeSprite(player, input);
-            }else if (input.equals("s")){
-                player.move(input);
-                grid.placeSprite(player, input);
-            }else if (input.equals("d")){
-                player.move(input);
-                grid.placeSprite(player, input);
-            }
+            grid.display();
+            System.out.println(player.getCoords(size));
+            System.out.println(player.getRowCol(size));
+            System.out.println("Treasure Collected: "+player.getCount());
+            System.out.println("Lives remaining: "+ player.getLives());
+            System.out.print("Enter a direction (w,a,s,d) or 'q' to exit: ");
+            input = scanner.nextLine().trim().toLowerCase();
+
+            
+            player.interact(grid.getGrid(),input);
+            player.move(input);
+
+            grid.placeSprite(player, input);
         }
     }
 
