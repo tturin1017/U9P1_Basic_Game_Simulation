@@ -72,6 +72,19 @@ public class Grid{
             System.out.println();
         }
     }
+    
+    public void gameover(){
+        for(int i=0;i<size;i++){
+            for(int j=0;j<size;j++){
+                if(!(grid[i][j] instanceof Player)){
+                    System.out.print("💀");
+                }else{
+                    System.out.print("🦄");
+                }
+            }
+            System.out.println();
+        }
+    }
 
     public boolean isValid(int x, int y){
         return x>=0 && x < size && y>=0 && y < size;

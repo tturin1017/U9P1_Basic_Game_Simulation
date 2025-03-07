@@ -41,7 +41,7 @@ public class Game{
         Scanner scanner = new Scanner(System.in);
         String input = "";
 
-        while(!input.equals("q")){
+        while(!input.equals("q") && player.getLives()!=0){
             try {
                 Thread.sleep(100); // Wait for 1/10 seconds
             } catch (InterruptedException e) {
@@ -62,6 +62,11 @@ public class Game{
             player.move(input);
 
             grid.placeSprite(player, input);
+        }
+        if(player.getLives()==0){
+            clearScreen();
+            grid.gameover();
+            System.out.println("    GAMEOVER");
         }
     }
 
