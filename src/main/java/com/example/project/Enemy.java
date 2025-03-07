@@ -12,7 +12,12 @@ public class Enemy extends Sprite {
     }
 
     @Override
-    public String getCoords(int size){
-        return "Enemy " + super.getCoords(size);
+    public String getCoords(){
+        return "Enemy:" + super.getCoords();
+    }
+
+    @Override
+    public String getRowCol(int size){
+        return "Enemy:"+super.getRowCol(size);
     }
 }

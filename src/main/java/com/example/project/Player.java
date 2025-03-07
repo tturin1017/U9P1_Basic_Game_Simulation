@@ -32,12 +32,12 @@ public class Player extends Sprite {
 
     @Override
     public String getCoords(){
-        return "Player " + super.getCoords();
+        return "Player:" + super.getCoords();
     }
 
     @Override
     public String getRowCol(int size){
-        return "Player "+ super.getRowCol(size);
+        return "Player:"+ super.getRowCol(size);
     }
 
     public void interact(Sprite[][] grid, String direction, int numTreasures) {

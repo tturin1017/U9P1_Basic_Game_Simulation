@@ -15,7 +15,7 @@ public class Sprite {
     public void setY(int y){this.y=y;}
 
     public String getCoords(){
-        return "("+x+", "+(y)+")";
+        return "("+x+","+y+")";
     }
 
     public String getRowCol(int size){
