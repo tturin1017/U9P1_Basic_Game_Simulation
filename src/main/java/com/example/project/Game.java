@@ -7,6 +7,7 @@ public class Game{
     private Player player;
     private Enemy[] enemies;
     private Treasure[] treasures;
+    private Trophy trophy;
     private int size; 
 
     public Grid getGrid(){return grid;}
@@ -41,7 +42,7 @@ public class Game{
         Scanner scanner = new Scanner(System.in);
         String input = "";
 
-        while(!input.equals("q") && player.getLives()!=0){
+        while(!input.equals("q") && player.getLives()!=0 && !player.getWin()){
             try {
                 Thread.sleep(100); // Wait for 1/10 seconds
             } catch (InterruptedException e) {
@@ -52,29 +53,34 @@ public class Game{
             grid.display();
             System.out.println(player.getCoords(size));
             System.out.println(player.getRowCol(size));
-            System.out.println("Treasure Collected: "+player.getCount());
+            System.out.println("Treasure Collected: "+player.getTreasureCount());
             System.out.println("Lives remaining: "+ player.getLives());
             System.out.print("Enter a direction (w,a,s,d) or 'q' to exit: ");
             input = scanner.nextLine().trim().toLowerCase();
 
             
-            player.interact(grid.getGrid(),input);
+            player.interact(grid.getGrid(),input, treasures.length);
             player.move(input);
 
             grid.placeSprite(player, input);
         }
+        clearScreen();
         if(player.getLives()==0){
-            clearScreen();
             grid.gameover();
             System.out.println("    GAMEOVER");
+        }else if(player.getWin()){
+            grid.win();
+            System.out.println("    YOU WIN");
         }
     }
 
     public void initialize(){
         player = new Player (0,0);
+        trophy = new Trophy(0,9);
         grid = new Grid(size);
 
         grid.placeSprite(player);
+        grid.placeSprite(trophy);
 
         enemies = new Enemy[3];
         enemies[0] = new Enemy(5, 5);

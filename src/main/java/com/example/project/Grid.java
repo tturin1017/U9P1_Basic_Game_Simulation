@@ -65,9 +65,11 @@ public class Grid{
                     System.out.print("🦄");
                 } else if (grid[i][j] instanceof Enemy) {
                     System.out.print("🦂");
-                } else if (grid[i][j] instanceof Treasure) {
+                } else if (grid[i][j] instanceof Trophy){
+                    System.out.print("🏆");
+                }else if (grid[i][j] instanceof Treasure) {
                     System.out.print("🌈");
-                }
+                } 
             }
             System.out.println();
         }
@@ -78,6 +80,19 @@ public class Grid{
             for(int j=0;j<size;j++){
                 if(!(grid[i][j] instanceof Player)){
                     System.out.print("💀");
+                }else{
+                    System.out.print("🦄");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public void win(){
+        for(int i=0;i<size;i++){
+            for(int j=0;j<size;j++){
+                if(!(grid[i][j] instanceof Player)){
+                    System.out.print("🌈");
                 }else{
                     System.out.print("🦄");
                 }

@@ -5,12 +5,4 @@ public class Treasure extends Sprite {
         super(x, y);
     }
 
-    @Override 
-    public void move(String direction){
-        
-    }
-    @Override
-    public void interact() {
-        // Implement treasure collection logic
-    }
 }
