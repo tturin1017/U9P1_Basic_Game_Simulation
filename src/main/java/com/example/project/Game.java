@@ -47,7 +47,7 @@ public class Game{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            clearScreen(); // Clear the screen
+            //clearScreen(); // Clear the screen
 
             grid.display();
             System.out.println(player.getCoords());
@@ -58,10 +58,22 @@ public class Game{
             input = scanner.nextLine().trim().toLowerCase();
 
             
-            player.interact(grid.getGrid(),input, treasures.length);
-            player.move(input);
-
-            grid.placeSprite(player, input);
+            //player.interact(grid.getGrid(),input, treasures.length);
+            Object obj = new Object();
+            player.isValid(size,input);
+            if(player.isValid(size,input)){
+                switch(input){
+                    case "w": obj = grid.getGrid()[(size-1)-player.getY()-1][player.getX()]; break;
+                    case "a": obj = grid.getGrid()[(size-1)-player.getY()][player.getX()-1]; break;
+                    case "s": obj = grid.getGrid()[(size-1)-player.getY()+1][player.getX()]; break;
+                    case "d": obj = grid.getGrid()[(size-1)-player.getY()][player.getX()+1]; break;
+                    }
+                player.interact(grid.getGrid().length,input,treasures.length,obj);
+                player.move(input);
+                grid.placeSprite(player, input);
+            }
+            
+           
         }
         clearScreen();
         if(player.getLives()==0){
