@@ -38,65 +38,7 @@ public class Player extends Sprite {
         return "Player:"+ super.getRowCol(size);
     }
 
-    // public void interact(Sprite[][] grid, String direction, int numTreasures) {
-    //     int row = grid.length-1-y;
-    //     int col = x;
 
-    //     //if a treasure or enemy is in your way
-    //     if(direction.equals("a") && col>0){
-    //         if(grid[row][col-1] instanceof Treasure &&!(grid[row][col-1] instanceof Trophy)){
-    //             treasureCount++;
-    //         }else if(grid[row][col-1] instanceof Enemy){
-    //             numLives--;
-    //         }else if(grid[row][col-1] instanceof Trophy){
-    //             if(treasureCount==numTreasures){
-    //                 win = true;
-    //             }else if(col<grid.length-1){
-    //                 move("d"); //move backwards
-    //             }
-    //         }
-    //     } else if(direction.equals("d") && col<grid.length-1){
-    //         if(grid[row][col+1] instanceof Treasure &&!(grid[row][col+1] instanceof Trophy)){
-    //             treasureCount++;
-    //         }else if (grid[row][col+1] instanceof Enemy){
-    //             numLives--;
-    //         }else if(grid[row][col+1] instanceof Trophy){
-    //             if(treasureCount==numTreasures){
-    //                 win = true;
-    //             }else if(col>0){
-    //                 System.out.println("HII");
-    //                 move("a"); //move backwards
-    //             }
-
-    //         }
-    //     }else if(direction.equals("w") && row>0){
-    //         if(grid[row-1][col] instanceof Treasure && !(grid[row-1][col] instanceof Trophy)){
-    //             treasureCount++;
-    //         }else if(grid[row-1][col] instanceof Enemy){
-    //             numLives--;
-    //         }else if(grid[row-1][col] instanceof Trophy){
-    //             if(treasureCount==numTreasures){
-    //                 win = true;
-    //             }else if(row<grid.length-1){
-    //                 move("s"); //move backwards
-    //             }
-
-    //         }
-    //     }else if(direction.equals("s") && row<grid.length-1){
-    //         if(grid[row+1][col] instanceof Treasure && !(grid[row+1][col] instanceof Trophy)){
-    //             treasureCount++;
-    //         }else if(grid[row+1][col] instanceof Enemy){
-    //             numLives--;
-    //         }else if(grid[row+1][col] instanceof Trophy){
-    //             if(treasureCount==numTreasures){
-    //                 win = true;
-    //             }else if(row>0){
-    //                 move("w"); //move backwards
-    //             }
-
-    //         }
-    //     }
-    // }
 
     public void interact(int size, String direction, int numTreasures, Object obj) {
             if(obj instanceof Treasure && !(obj instanceof Trophy)){
