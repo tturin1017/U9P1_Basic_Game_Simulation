@@ -47,7 +47,7 @@ public class Game{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //clearScreen(); // Clear the screen
+            clearScreen(); // Clear the screen
 
             grid.display();
             System.out.println(player.getCoords());
