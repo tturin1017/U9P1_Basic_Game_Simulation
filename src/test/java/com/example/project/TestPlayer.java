@@ -5,14 +5,17 @@ import org.junit.jupiter.api.Test;
 
 public class TestPlayer {
     @Test
-    void testPlayerInitialization() {
+    void testplayerInitialization() {
         Player player = new Player(0, 0);
         assertEquals(0, player.getX(), "Player's initial X should be 0");
         assertEquals(0, player.getY(), "Player's initial Y should be 0");
+        assertEquals("Player:[9][0]",player.getRowCol(10), "Player should be at [9][0] bottom left");
         assertEquals(0, player.getTreasureCount(), "Player's initial treasure count should be 0");
         assertEquals(2, player.getLives(), "Player's initial lives should be 2");
         assertFalse(player.getWin(), "Player's initial win state should be false");
+        
     }
+
 
     @Test
     void testPlayerMoveUp() {

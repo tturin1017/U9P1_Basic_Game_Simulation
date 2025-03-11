@@ -31,8 +31,6 @@ public class Sprite {
         // Default behavior (can be overridden by subclasses)
     }
 
-    // public boolean isValid(int x, int y, int size){
-    //     return x>=0 && x < size && y>=0 && y < size;
-    // }
+
 
 }

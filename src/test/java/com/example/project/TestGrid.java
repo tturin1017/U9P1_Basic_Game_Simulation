@@ -53,6 +53,7 @@ public class TestGrid {
         assertEquals(enemy, grid.getGrid()[4][5], "Enemy should be at [4][5]");
         assertEquals(treasure, grid.getGrid()[7][2], "Treasure should be at [7][2]");
         assertEquals(trophy, grid.getGrid()[0][9], "Trophy should be at [0][9]");
+        assertTrue(grid.getGrid()[9][1] instanceof Dot, "There should be a dot at [9][1]");
     }
 
     @Test
