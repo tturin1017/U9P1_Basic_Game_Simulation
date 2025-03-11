@@ -60,7 +60,6 @@ public class Game{
             
             //player.interact(grid.getGrid(),input, treasures.length);
             Object obj = new Object();
-            player.isValid(size,input);
             if(player.isValid(size,input)){
                 switch(input){
                     case "w": obj = grid.getGrid()[(size-1)-player.getY()-1][player.getX()]; break;

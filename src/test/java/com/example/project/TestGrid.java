@@ -56,6 +56,26 @@ public class TestGrid {
     }
 
     @Test
+    public void testPlayerOutOfBoundsMovement() {
+        // Test player trying to move out of bounds in all directions
+
+        //player is currently at [9][0]
+        
+        assertFalse(player.isValid(10,"a"), "player is should not be able to move left at [9][0]");
+        assertTrue(player.isValid(10,"w"), "player can move up at [9][0]");
+        assertFalse(player.isValid(10,"s"),"player should not be able to move down at [9][0]");
+        assertTrue(player.isValid(10,"d"), "player can move right at [9][0]");
+
+        player.setX(9);
+        player.setY(9);
+        assertTrue(player.isValid(10,"a"), "player is should  be able to move left at [0][9]");
+        assertFalse(player.isValid(10,"w"), "player should not be able to move up at [0][9]");
+        assertTrue(player.isValid(10,"s"),"player should  be able to move down at [0][9]");
+        assertFalse(player.isValid(10,"d"), "player should not be able to move right at [0][9]");
+
+    }
+
+    @Test
     public void testPlayerMoveUpdatesGrid() {
 
       
