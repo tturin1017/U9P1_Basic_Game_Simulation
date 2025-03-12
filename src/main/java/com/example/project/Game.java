@@ -9,19 +9,10 @@ public class Game{
     private Trophy trophy;
     private int size; 
 
-    public Grid getGrid(){return grid;}
-    public Player getPlayer(){return player;}
-    public Enemy[] getEnemies(){return enemies;}
-    public Treasure[] getTreasures(){return treasures;}
-    public int getSize(){return size;}
-
-    public Game(int size){
-        this.size = size;
-        this.initialize();
-        this.play();
+    public Game(int size){ //the constructor should call initialize() and play()
     }
 
-    public static void clearScreen() {
+    public static void clearScreen() { //do not modify
         try {
             final String os = System.getProperty("os.name").toLowerCase();
             if (os.contains("win")) {
@@ -37,83 +28,32 @@ public class Game{
         }
     }
 
-    public void play(){
+    public void play(){ //write your game logic here
         Scanner scanner = new Scanner(System.in);
-        String input = "";
 
-        while(!input.equals("q") && player.getLives()!=0 && !player.getWin()){
+
+        while(true){
             try {
                 Thread.sleep(100); // Wait for 1/10 seconds
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            clearScreen(); // Clear the screen
+            clearScreen(); // Clear the screen at the beggining of the while loop
 
-            grid.display();
-            System.out.println(player.getCoords());
-            System.out.println(player.getRowCol(size));
-            System.out.println("Treasure Collected: "+player.getTreasureCount());
-            System.out.println("Lives remaining: "+ player.getLives());
-            System.out.print("Enter a direction (w,a,s,d) or 'q' to exit: ");
-            input = scanner.nextLine().trim().toLowerCase();
-
-            
-            //player.interact(grid.getGrid(),input, treasures.length);
-            Object obj = new Object();
-            if(player.isValid(size,input)){
-                switch(input){
-                    case "w": obj = grid.getGrid()[(size-1)-player.getY()-1][player.getX()]; break;
-                    case "a": obj = grid.getGrid()[(size-1)-player.getY()][player.getX()-1]; break;
-                    case "s": obj = grid.getGrid()[(size-1)-player.getY()+1][player.getX()]; break;
-                    case "d": obj = grid.getGrid()[(size-1)-player.getY()][player.getX()+1]; break;
-                    }
-                player.interact(grid.getGrid().length,input,treasures.length,obj);
-                player.move(input);
-                grid.placeSprite(player, input);
+     
             }
             
-           
-        }
-        clearScreen();
-        if(player.getLives()==0){
-            grid.gameover();
-            System.out.println("    GAMEOVER");
-        }else if(player.getWin()){
-            grid.win();
-            System.out.println("    YOU WIN");
-        }
+     
     }
 
     public void initialize(){
-        player = new Player (0,0);
-        trophy = new Trophy(0,9);
-        grid = new Grid(size);
 
-        grid.placeSprite(player);
-        grid.placeSprite(trophy);
-
-        enemies = new Enemy[3];
-        enemies[0] = new Enemy(5, 5);
-        enemies[1] = new Enemy(7, 2);
-        enemies[2] = new Enemy(3, 8);
-        for (Enemy enemy : enemies) {
-            grid.placeSprite(enemy);
-        }
-
-        treasures = new Treasure[2];
-        treasures[0] = new Treasure(2, 2);
-        treasures[1] = new Treasure(8, 8);
-        for (Treasure treasure : treasures) {
-            grid.placeSprite(treasure);
-        }
+        //to test, create a player, trophy, grid, treasure, and enemies. Then call placeSprite() to put them on the grid
+   
     }
 
-    public int generateCoord(){
-        return (int) (Math.random()*(size-0)+0); //generate 0-size (exclusive)
-    }
 
     public static void main(String[] args) {
-        Game g = new Game(10);
         
     }
 }

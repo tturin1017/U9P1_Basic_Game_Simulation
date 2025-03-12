@@ -14,20 +14,20 @@ public class Sprite {
     public void setX(int x){this.x=x;}
     public void setY(int y){this.y=y;}
 
-    public String getCoords(){
-        return "("+x+","+y+")";
+    public String getCoords(){ //returns the coordinates of the sprite ->"(x,y)"
+        return "";
     }
 
-    public String getRowCol(int size){
-        return "["+((size-1)-y)+"]"+"["+x+"]";
+    public String getRowCol(int size){ //returns the row and column of the sprite -> "[row][col]"
+        return "[][]";
     }
     
 
-    public void move(String direction) {
+    public void move(String direction) { //you can leave this empty
         // Default behavior (can be overridden by subclasses)
     }
 
-    public void interact() {
+    public void interact() { //you can leave this empty
         // Default behavior (can be overridden by subclasses)
     }
 

@@ -1,23 +1,20 @@
 package com.example.project;
 
-public class Enemy extends Sprite {
+//Enemy only need constructor and getCoords() getRowCol()
+public class Enemy  { //child  of Sprite
     
     public Enemy(int x, int y) {
-        super(x, y);
     }
 
-    @Override
-    public void move(String direction) {
-        // Implement random or chasing movement
+
+    //the methods below should override the super class 
+
+
+    public String getCoords(){ //returns "Enemy:"+coordinates
+        return "";
     }
 
-    @Override
-    public String getCoords(){
-        return "Enemy:" + super.getCoords();
-    }
 
-    @Override
-    public String getRowCol(int size){
-        return "Enemy:"+super.getRowCol(size);
+    public String getRowCol(int size){ //return "Enemy:"+row col
     }
 }
