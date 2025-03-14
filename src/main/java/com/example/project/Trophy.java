@@ -4,6 +4,4 @@ package com.example.project;
 public class Trophy  { //child of trophy
     public Trophy(int x, int y){
     }
-
-    
 }

@@ -1,6 +1,7 @@
 package com.example.project;
 
 
+//DO NOT DELETE ANY METHODS BELOW
 public class Grid{
     private Sprite[][] grid;
     private int size;
@@ -8,11 +9,15 @@ public class Grid{
     public Grid(int size) { //initialize and create a grid with all DOT objects
     }
 
-    //DO NOT DELETE
+ 
     public Sprite[][] getGrid(){return grid;}
 
 
-    //DO NOT DELETE
+
+    public void placeSprite(Sprite s){ //place sprite in new spot
+
+    }
+
     public void placeSprite(Sprite s, String direction) { //place sprite in a new spot based on direction
 
     }
